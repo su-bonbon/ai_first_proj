@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujin Lee - Software Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Sujin Lee</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content container">
+                <h1 class="fade-in">Crafting Digital Experiences</h1>
+                <p class="fade-in" style="animation-delay: 0.2s;">Hi, I'm Sujin Lee, a software developer and cloud engineer passionate about building beautiful and functional web applications.</p>
+                <a href="#portfolio" class="btn fade-in" style="animation-delay: 0.4s;">View My Work</a>
+            </div>
+            <div id="hero-animation"></div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title fade-in">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text fade-in" style="animation-delay: 0.2s;">
+                        <p>I am a detail-oriented software developer with a strong foundation in cloud technologies. My journey in tech has been driven by a desire to solve complex problems and create seamless user experiences. I thrive in collaborative environments and am always eager to learn and adapt to new challenges.</p>
+                    </div>
+                    <div class="about-skills fade-in" style="animation-delay: 0.4s;">
+                        <h3>Core Skills:</h3>
+                        <ul>
+                            <li>JavaScript (ES6+)</li>
+                            <li>React & Vue.js</li>
+                            <li>Node.js & Express</li>
+                            <li>Python</li>
+                            <li>AWS & Google Cloud</li>
+                            <li>Docker & Kubernetes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <div class="container">
+                <h2 class="section-title fade-in">My Portfolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item fade-in" style="animation-delay: 0.2s;">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 1">
+                        <h3>Project One</h3>
+                        <p>A web application for real-time data visualization.</p>
+                    </div>
+                    <div class="portfolio-item fade-in" style="animation-delay: 0.4s;">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 2">
+                        <h3>Project Two</h3>
+                        <p>A cloud-native serverless API for a mobile app.</p>
+                    </div>
+                    <div class="portfolio-item fade-in" style="animation-delay: 0.6s;">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 3">
+                        <h3>Project Three</h3>
+                        <p>An e-commerce platform with a custom payment gateway.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title fade-in">Get In Touch</h2>
+                <form class="contact-form fade-in" style="animation-delay: 0.2s;">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sujin Lee. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
