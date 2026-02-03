@@ -1,7 +1,62 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js';
-
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Theme switcher logic
+    const themeToggle = document.getElementById('checkbox');
+    const htmlEl = document.documentElement;
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            htmlEl.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            htmlEl.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    themeToggle.addEventListener('change', switchTheme, false);
+
+    const currentTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (currentTheme) {
+        htmlEl.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'light') {
+            themeToggle.checked = true;
+        }
+    } else if (prefersDark) {
+        htmlEl.setAttribute('data-theme', 'dark');
+    } else {
+        htmlEl.setAttribute('data-theme', 'light');
+        themeToggle.checked = true;
+    }
+
+
+    // Intersection Observer for fade-in animations
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+        threshold: 0.1, 
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+            entry.target.classList.add('is-visible');
+            appearOnScroll.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+
+});
+
+window.onload = function() {
     // Three.js Scene
     let scene, camera, renderer, torus;
 
@@ -60,59 +115,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     initThree();
-
-    // Theme switcher logic
-    const themeToggle = document.getElementById('checkbox');
-    const htmlEl = document.documentElement;
-
-    function switchTheme(e) {
-        if (e.target.checked) {
-            htmlEl.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        } else {
-            htmlEl.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        }
-    }
-
-    themeToggle.addEventListener('change', switchTheme, false);
-
-    const currentTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (currentTheme) {
-        htmlEl.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'light') {
-            themeToggle.checked = true;
-        }
-    } else if (prefersDark) {
-        htmlEl.setAttribute('data-theme', 'dark');
-    } else {
-        htmlEl.setAttribute('data-theme', 'light');
-        themeToggle.checked = true;
-    }
-
-
-    // Intersection Observer for fade-in animations
-    const faders = document.querySelectorAll('.fade-in');
-
-    const appearOptions = {
-        threshold: 0.1, 
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-            entry.target.classList.add('is-visible');
-            appearOnScroll.unobserve(entry.target);
-        });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
-
-});
+};
